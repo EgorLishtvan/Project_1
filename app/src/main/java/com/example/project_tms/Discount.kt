@@ -5,7 +5,7 @@ import java.lang.ArithmeticException
 data class Discount(
     var title: String,
     var descriptin: String,
-    var url: String?,
+    var url: String? = null,
     var amount: Int? = null,
     val type: Int?
 ) {
@@ -18,7 +18,7 @@ data class Discount(
                 0
             }
         } catch (exception: ArithmeticException) {
-            0
+            -1
         }
     }
 
@@ -29,9 +29,18 @@ data class Discount(
             value.substring(0, 100)
         }
     }
+
+    fun getSafeUrl(): String {
+        return url ?: "Google.com"
+    }
+
+    fun temp(url: String?): String {
+        return url ?: "Google.com"
+    }
 }
 
 fun main() {
-    val Discount = Discount("Cat", "The best", "jhdf",646,4)
+    val Discount = Discount("Cat", "The best", "jhdf", 646, 4)
     println(Discount)
+    Discount =
 }
