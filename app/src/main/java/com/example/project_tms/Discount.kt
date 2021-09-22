@@ -7,7 +7,7 @@ data class Discount(
     var descriptin: String,
     var url: String? = null,
     var amount: Int? = null,
-    val type: Int?
+    var type: Type
 ) {
 
     fun setMyAmount(value: Int?) {
@@ -26,7 +26,7 @@ data class Discount(
         title = if (value.length <= 100) {
             value
         } else {
-            value.substring(0, 100)
+            value.substring(0..100)
         }
     }
 
@@ -40,7 +40,12 @@ data class Discount(
 }
 
 fun main() {
-    val Discount = Discount("Cat", "The best", "jhdf", 646, 4)
-    println(Discount)
-    Discount =
+    val discount = Discount("Cat", "The best", "jhdf", 646, Type.fixAmount(6))
+    println(discount)
+    discount.type = Type.NoDiscount
+    println(discount.type.calculate(5))
+    discount.type = Type.fixAmount(5)
+    println(discount.type.calculate(5))
+    discount.type = Type.rangeAmount(5,6)
+    println(discount.type.calculate(5))
 }
