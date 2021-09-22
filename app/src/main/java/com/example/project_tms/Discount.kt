@@ -27,7 +27,6 @@ class Discount {
                 } else {
                     0
                 }
-
             } catch (exception: ArithmeticException) {
                 0
             }
