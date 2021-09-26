@@ -29,7 +29,7 @@ data class Discount(
             value.substring(0..100)
         }
     }
-
+///6841561651
     fun getSafeUrl(): String {
         return url ?: "Google.com"
     }
